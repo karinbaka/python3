@@ -74,7 +74,7 @@ cmd = 'tar zxvf ' + nginx_package
 
 res = os.system(cmd)
 
-cmd = 'cd ' + nginx_package + \
+cmd = 'cd ' + nginx_dir + \
     ' && ./configure --prefix=/usr/local/nginx && make && make install'
 
 res = os.system(cmd)
