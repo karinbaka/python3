@@ -15,7 +15,7 @@ else:
     print("需要root用户才可以安装")
     sys.exit(1)
 #安装依赖：
-yilai = 'yum install -y gcc gcc-c++ openssl openssl-devel ncurses ncurses pcre zlib zlib-devel pcre-devel libtool automake autoconf curl curl-devel libjpeg libjpeg-devel libpng libpng-devel freetype freetype-devel libxslt libxslt-devel bzip2 bzip2-devel openldap openldap-devel libffi-devel'
+yilai = 'yum install -y wget gcc gcc-c++ openssl openssl-devel ncurses ncurses pcre zlib zlib-devel pcre-devel libtool automake autoconf curl curl-devel libjpeg libjpeg-devel libpng libpng-devel freetype freetype-devel libxslt libxslt-devel bzip2 bzip2-devel openldap openldap-devel libffi-devel'
 res = os.system(yilai)
 
 #安装python3:
@@ -60,8 +60,7 @@ cmd = 'ln -s /usr/local/python/bin/pip3 /usr/bin/pip3 && ln -s /usr/local/python
 res = os.system(cmd)
 
 if res != 0:
-    print('无法创建软链接，检查目录下是否存在')
-    sys.exit(1)
+    print('无法创建软链接，检查目录下是否存在！')
 else:
     print('Python3 安装完成!')
 
@@ -122,7 +121,7 @@ if os.path.isfile(mysql_package):
     print("mysql包已存在，无需下载！")
     pass
 else:
-    res = os.system("cmd")
+    res = os.system(cmd)
     if res != 0:
         print("下载失败，请检查网络！")
         sys.exit(1)

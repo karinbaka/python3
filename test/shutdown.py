@@ -28,5 +28,7 @@ path = "d:/tmp/home/monthly/daily"
 print(os.makedirs(path))
 '''
 mysql_dir = 'mysql-5.7.24-linux-glibc2.12-x86_64.tar.gz'
-cmd = 'tar zxvf '+ mysql_dir +' -C /usr/local/ && mv '+ mysql_dir[0:len(mysql_dir)-7] +' /usr/local/mysql'
+cmd = 'tar zxvf '+ mysql_dir +' -C /usr/local/ && mv /usr/local/'+ mysql_dir[0:len(mysql_dir)-7] +' /usr/local/mysql'
 print(cmd)
+
+#tar zxvf mysql-5.7.24-linux-glibc2.12-x86_64.tar.gz -C /usr/local/
