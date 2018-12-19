@@ -32,3 +32,4 @@ cmd = 'tar zxvf '+ mysql_dir +' -C /usr/local/ && mv /usr/local/'+ mysql_dir[0:l
 print(cmd)
 
 #tar zxvf mysql-5.7.24-linux-glibc2.12-x86_64.tar.gz -C /usr/local/
+
