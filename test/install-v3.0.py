@@ -1,7 +1,7 @@
 #!/usr/local/env python
 # -*- coding:utf-8 -*-
-
 #####
+#
 #
 #
 #####
@@ -109,22 +109,4 @@ else:
     else:
         print("nginx安装完成！")
 
-
-#Mysql安装
-url = 'https://cdn.mysql.com//Downloads/MySQL-5.7/mysql-5.7.24-linux-glibc2.12-x86_64.tar'
-cmd = 'wget ' + url
-
-mysql_package = url.split('/')[-1]
-mysql_dir = mysql_package[0:len(mysql_package)-4]
-
-if os.path.isfile(mysql_package):
-    print("mysql包已存在，无需下载！")
-    pass
-else:
-    res = os.system(cmd)
-    if res != 0:
-        print("下载失败，请检查网络！")
-        sys.exit(1)
-
-cmd = 'tar zxvf ' + mysql_package + ' -C /usr/loca/mysql'
 

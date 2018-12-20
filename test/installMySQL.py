@@ -1,6 +1,10 @@
 #!/usr/local/env python
-# *-* coding:utf-8 *-*
-
+# -*- coding:utf-8 -*-
+######
+#
+#
+#
+######
 #MySQL安装
 import os
 import sys
@@ -26,12 +30,17 @@ mysql_dir = 'mysql-5.7.24-linux-glibc2.12-x86_64.tar.gz'
 res = os.system(cmd)
 
 #这个包是解压解包出来的，需要二次解压
-cmd = 'tar zxvf '+ mysql_dir +' -C /usr/local/'
+cmd = 'tar zxvf '+ mysql_dir +' -C /usr/local/ && \
+mv -f /usr/local/'+ mysql_dir[0:len(mysql_dir)-7] +' /usr/local/mysql'
 
-cmd2 = 'mv -f /usr/local/'+ mysql_dir[0:len(mysql_dir)-7] +' /usr/local/mysql'
+#cmd2 = 'mv -f /usr/local/'+ mysql_dir[0:len(mysql_dir)-7] +' /usr/local/mysql'
 
 if os.path.exists('/usr/local/'+ mysql_dir[0:len(mysql_dir)-7]) == 1:
-	pass
+    print("已经解压在当前路径！")
+    pass
+elif os.path.exists('/usr/local/mysql') == 1:
+    print("路径下已经存在mysql目录，请检查路径！")
+    pass
 else:
     res = os.system(cmd)
 
@@ -49,14 +58,14 @@ else:
     print("目录创建完成！")
 
 #安装mysql
-if os.path.exists('/usr/logs/mysql/') == 1:
-    print("已经安装的mysql，目录已经存在！")
-    pass
-else:
-    res = os.system(cmd2)
+#if os.path.exists('/usr/logs/mysql/') == 1:
+#    print("已经安装的mysql，目录已经存在！")
+#    pass
+#else:
+#    res = os.system(cmd2)
 
 #配置my.cnf:
-mysql_config = open('/etc/my.cnf', mode='a+')
+mysql_config = open('/etc/my.cnf', mode='w')
 mycnf = """
 [mysqld]
 port = 8010
@@ -91,12 +100,13 @@ res = os.system(cmd)
 cmd = 'chown mysql.mysql -R /usr/local/mysql && chown mysql.mysql -R /data/mysql/'
 res = os.system(cmd)
 
-#初始化：
-cmd = 'cd /usr/local/mysql/bin/ && ./mysqld --initialize --defaults-file=/etc/my.cnf  --user=mysql && service mysqld start'
+#初始化并启动：
+cmd = 'mysqld --initialize --user=mysql   && service mysqld start && cat /data/mysql/logs/error.log |grep password'
 res = os.system(cmd)
 
 print("""
     请依次输入如下内容完成密码修改：
+    mysql -uroot -p
     1.设置密码：
     set password=password('123456');
     2.特定ip访问mysql ip可以用%号表示全部可以访问：
