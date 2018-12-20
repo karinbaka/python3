@@ -36,7 +36,7 @@ print(mycnf)
 mysql_config.write(mycnf)
 mysql_config.close()
 '''
-
+'''
 mysql_config = open('./my.cnf', mode='a+')
 mycnf = """
 [mysqld]
@@ -51,3 +51,4 @@ binlog_ignore_db = include_database_name
 #print(mycnf)
 mysql_config.write(mycnf)
 mysql_config.close()
+'''

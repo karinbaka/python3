@@ -2,10 +2,11 @@
 # -*- coding:utf-8 -*-
 ######
 #
-#
+# @ Author: kainrbaka
+# @ email: 47525620@qq.com
 #
 ######
-#MySQL安装
+#MySQL安装5.7.24 编译太麻烦了也费时间，直接下载使用的二进制包
 import os
 import sys
 
@@ -101,7 +102,7 @@ cmd = 'chown mysql.mysql -R /usr/local/mysql && chown mysql.mysql -R /data/mysql
 res = os.system(cmd)
 
 #初始化并启动：
-cmd = 'mysqld --initialize --user=mysql   && service mysqld start && cat /data/mysql/logs/error.log |grep password'
+cmd = 'mysqld --initialize --user=mysql && service mysqld start && cat /data/mysql/logs/error.log |grep password'
 res = os.system(cmd)
 
 print("""

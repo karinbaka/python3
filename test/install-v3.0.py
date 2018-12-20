@@ -2,9 +2,11 @@
 # -*- coding:utf-8 -*-
 #####
 #
-#
+# @ Author: kainrbaka
+# @ email: 47525620@qq.com
 #
 #####
+# ps: 依顺序执行v3 > mysql > php 脚本，否则会报错
 
 import os
 import sys
@@ -15,8 +17,11 @@ else:
     print("需要root用户才可以安装")
     sys.exit(1)
 #安装依赖：
-yilai = 'yum install -y wget gcc gcc-c++ openssl openssl-devel ncurses ncurses pcre zlib zlib-devel pcre-devel libtool automake autoconf curl curl-devel libjpeg libjpeg-devel libpng libpng-devel freetype freetype-devel libxslt libxslt-devel bzip2 bzip2-devel openldap openldap-devel libffi-devel'
-res = os.system(yilai)
+cmd = 'yum install -y wget vim gcc gcc-c++ openssl openssl-devel ncurses ncurses-devel \
+pcre zlib zlib-devel pcre-devel libtool automake autoconf curl curl-devel libzip libzip-devel\
+libjpeg libjpeg-devel libpng libpng-devel freetype freetype-devel libxslt libxslt-devel \
+bzip2 bzip2-devel openldap openldap-devel libffi-devel gmp-devel net-snmp net-snmp-devel'
+res = os.system(cmd)
 
 #安装python3:
 
@@ -109,4 +114,5 @@ else:
     else:
         print("nginx安装完成！")
 
+#####
 
