@@ -86,7 +86,7 @@ mysql_config.close()
 
 
 #加入环境变量：
-cmd = 'echo "export PATH=/usr/local/mysql/bin:/usr/local/mysql/lib:$PATH" >> /etc/profile && source /etc/profile'
+cmd = "echo 'export PATH=/usr/local/mysql/bin:/usr/local/mysql/lib:$PATH' >> /etc/profile && source /etc/profile"
 res = os.system(cmd)
 
 #创建用户，组：
